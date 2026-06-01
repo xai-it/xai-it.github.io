@@ -10,16 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>XAI.it 2024 | Italian Workshop on Explainable Artificial Intelligence</title>
+    <title>XAI.it 2026 | Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight</title>
     <meta name="keywords" content="artificial intelligence, artificial, intelligence, explainable, explanation, ai">
-    <meta name="description" content="XAI.it 2024 - Italian Workshop on Explainable Artificial Intelligence">
-    <meta name="author" content="Cataldo Musto and Erasmo Purificato and Marco Polignano">
+    <meta name="description" content="XAI.it 2026 - 6th Workshop on Explainable AI, Generative and Agentic Systems: Trust, Transparency, and Human Oversight">
+    <meta name="author" content="Marco Polignano">
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-<!-- CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -27,17 +27,17 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-
+    <style>
+    p {
+      font-size: 18px !important;
+      font-family: Arial;
+    }
+    </style>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-    p {
-      font-size: 17px !important;
-      font-family: Arial;
-    }
-    </style>
+
 </head>
 
 <body>
@@ -113,18 +113,21 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
-                  <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                      <li class="nav-item-active"><a class="nav-link" href="motivation.html">Motivations</a></li>
-                      <li class="nav-item"><a class="nav-link" href="call.html">CALL FOR PAPERS</a></li>
-                      <!-- <li class="nav-item"><a class="nav-link"  href="papers.html">Accepted Papers</a></li>-->
-                      <li class="nav-item"><a class="nav-link"  href="program.html">Workshop Program</a></li>
-                      <li class="nav-item"><a class="nav-link" href="organizers.html">People</a></li>
-                          <!--   <li class="nav-item"><a class="nav-link" href="pc-member.html">Program Committee</a></li> -->
-                          <!-- <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.di.uniba.it/~swap/xai-it/2020">Previous Edition: XAI.it 2020</a></li> -->
-                      <!-- <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.di.uniba.it/~swap/xai-it/2021">Previous Edition: XAI.it 2021</a></li> -->
-                      <li class="nav-item"><a class="nav-link" target="_blank" href="https://beyondaccuracy-userprofiling.github.io/xai-it-2023/">Previous Edition: XAI.it 2023</a></li>
-                  </ul>
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item-active"><a class="nav-link" href="motivation.html">Motivations</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="call.html">Call for Papers</a></li>-->
+						            <!-- <li class="nav-item"><a class="nav-link"  href="program.html">Workshop Program</a></li>-->
+                        <!-- <li class="nav-item"><a class="nav-link" href="organizers.html">People</a></li>-->
+                        <!-- <li class="nav-item"><a class="nav-link" href="pc-member.html">Program Committee</a></li>-->
+                        <div class="dropdown">
+                        <div class="drop">Past Editions </i>
+                        </button>
+                        <div class="dropdown-content">
+                          <a class="nav-link" href="https://xai-it.github.io/2024/index.html">XAI.IT 2024</a>
+                          <a class="nav-link" href="https://beyondaccuracy-userprofiling.github.io/xai-it-2023/">XAI.IT 2023</a>
+                        </div>
+						        </ul>
                 </div>
                 <!-- /.navbar-collapse -->
 
@@ -170,9 +173,9 @@
                       <p style="text-align: justify; color :black"> Several research questions are triggered by this questioning:
                         <span style="text-align: left; color :black">
                           <ul style="font-size: 18px !important;">
-                      <li>  1.	How to design more transparent and more explainable models that maintain high performance?</li>
-                      <li>   2.	How to allow humans to understand and trust AI-based systems and methods?</li>
-                      <li>   3.	How to evaluate the overall transparency and explainability of the models?</li>
+                      <li>  1.	How to design more transparent and more explainable Agents, LLMs and Machine Learning models that maintain high performance?</li>
+                      <li>   2.	How to allow humans to understand and trust AI-based systems, methods and digital angents and assistants?</li>
+                      <li>   3.	How to evaluate the overall transparency, explainability, ethics and social impact of AI systems and models?</li>
                     </ul>
                         </span>
                         </p>
@@ -182,12 +185,16 @@
                     <h2 class="noo-sh-title-top">Background and Topic Relevence</span></h2>
 
                     <p style="text-align: justify; color :black">
-                      Nowadays we are witnessing a new summer of Artificial Intelligence, since the AI-based algorithms are being adopting in a growing number of contexts and applications domains, ranging from media and en-tertainment to medical, finance and legal decision-making.  While the very first AI systems were easily interpretable, the current trend showed the rise of opaque methodologies such as those based on Deep Neural Networks (DNN), whose (very good) effectiveness is contrasted by the enormous complexity of the models, which is due to the huge number of layers and parameters that characterize these mod-els. As intelligent systems become more and more widely applied (especially in very “sensitive” do-main), it is not possible to adopt opaque or inscrutable black-box models or to ignore  the general ra-tionale that guides the algorithms in the task it carries on  Moreover, the metrics that are usually adopt-ed to evaluate the effectiveness of the algorithms reward very opaque methodologies that maximize the accuracy of the suggestions at the expense of the transparency and explainability of the model. This is-sue is even more felt in the light of the recent experiences, such as the General Data Protection Regula-tion (GDPR) and DARPA's Explainable AI Project, which further emphasized the need and the right for scrutable and transparent methodologies that can guide the user in a complete comprehension of the in-formation held and managed by AI-based systems.
+                      Explainable AI (XAI) has become a central requirement for deploying modern AI systems, especially agents, LLMs and high‑capacity machine learning models, in safety‑critical, socially sensitive and decision‑support scenarios. Despite their impressive performance, these models are often opaque, making it difficult for users, stakeholders and regulators to understand how outputs are produced, to contest decisions, or to assess potential harms and biases. This opacity undermines trust, slows down real‑world adoption, and creates friction with emerging AI governance frameworks that explicitly call for transparency, accountability, and human oversight.
+					  <br><br>
+					  The proposed Workshop on Explainable AI aims to bring together researchers and practitioners working at the intersection of AI modeling, human–computer interaction, cognitive science, ethics and policy to rethink how intelligent systems are designed, evaluated and governed. A first core motivation is to explore methods for designing more transparent and more explainable agents, LLMs and machine learning models without sacrificing performance. This includes approaches such as intrinsically interpretable architectures, post‑hoc explanation methods, modular and neuro‑symbolic systems, and interaction patterns that expose model reasoning in a way that remains faithful and robust while meeting real‑world scalability and accuracy requirements.
                       <br><br>
-                      The workshop tries to address these research questions and aims to provide a forum for the Italian community to discuss problems, challenges, and innovative ap-proaches in the area.
-
-
-                    </p>
+					  A second key motivation is to understand how to enable humans, end users, domain experts, operators, and affected communities, to actually understand and trust AI‑based systems, methods, digital agents and assistants. Trust here is not blind acceptance but calibrated reliance grounded in meaningful explanations, uncertainty displays, user‑centered interaction design, and alignment with users’ mental models, values and goals. The workshop will therefore solicit contributions on human‑facing explanation interfaces, conversational and interactive explanations, user studies and cognitive aspects of explanation, as well as domain‑specific practices in areas such as healthcare, law, public administration, education and recommendation.
+					  <br><br>
+					  Current XAI evaluation practices are fragmented, often limited to technical proxies such as fidelity and sparsity, and rarely incorporate human‑centered measures like comprehension, trust calibration, contestability, or long‑term societal effects. The workshop will promote discussions on multi‑dimensional evaluation frameworks, benchmarks and protocols that combine quantitative and qualitative methods, link explanation quality to downstream decision quality, and integrate ethical and legal perspectives, including fairness, accountability, privacy, safety and environmental impact.
+					  <br><br>
+					  Overall, the workshop is motivated by the need to move from ad‑hoc explanation techniques toward principled, human‑centered and value‑aware design and assessment of explainable AI systems. By focusing on (1) designing transparent and performant models and agents, (2) enabling human understanding and appropriate trust, and (3) rigorously evaluating transparency, explainability, ethics and social impact, the event aims to chart concrete research directions and foster cross‑disciplinary collaborations that can make next‑generation AI not only powerful, but also understandable, contestable and socially responsible.
+					</p>
 
                 </div>
             </div>
@@ -199,37 +206,33 @@
     <footer>
         <div class="footer-main">
             <div class="container">
-              <div class="row">
-      					<div class="col-lg-5 col-md-12 col-sm-12">
-      						<div class="footer-top-box">
-      							<a href="https://aixia2024.events.unibz.it/"><h3>co-located with AI*IA 2024</h3></a>
-      							<ul class="list-time">
-      								<li>23nd International Conference of <br>the Italian Association for Artificial Intelligence</li>
-                                      <li>Bolzano, Italy, November 25-28, 2024</li>
-                                  </ul>
-                              </div>
-      					</div>
-                          <div class="col-lg-1 col-md-12 col-sm-12"></div>
-                          <div class="col-lg-6 col-md-12 col-sm-12">
-                              <div class="footer-top-box">
-                                  <h3>Social Media</h3>
-                                  <p>Follow us on Social Networks</p>
-                                  <ul>
-                                      <!-- <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li> -->
-                                      <li><a href="https://twitter.com/XAI_Workshop"><i class="fab fa-twitter" aria-hidden="true"></i></a></li><!--
-                                      <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                      <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                      <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                      <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                      <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>-->
-                                  </ul>
-                              </div>
-                          </div>
-		      <div class="footer-top-box">
-          <h3>in collaborazione con</h3>
-          <img src="images/logo_fair.png" style="width:100%">
-        </div>
-                      </div>
+				<div class="row">
+					<div class="col-lg-5 col-md-12 col-sm-12">
+						<div class="footer-top-box">
+							<a href="https://aixia2026.unipg.it/"><h3>co-located with AI*IA 2026</h3></a>
+							<ul class="list-time">
+								<li>24th International Conference of the <br> <b style="color:red">Italian Association</b> for Artificial Intelligence</li>
+                                <li>Perugia, Italy, October 8-9, 2026</li>
+                            </ul>
+                        </div>
+					</div>
+                    <div class="col-lg-1 col-md-12 col-sm-12"></div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Social Media</h3>
+                            <p>Follow us on Social Networks</p>
+                            <ul>
+                                <!-- <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li> -->
+                                <!--<li><a href="https://twitter.com/XAI_Workshop"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                       <hr>
         <!--
                 <div style="display: flex; align-items: center;">
