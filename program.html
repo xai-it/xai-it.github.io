@@ -3,6 +3,7 @@
 <!-- Basic -->
 
 <head>
+	
 	    <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,6 +22,142 @@
             font-style: italic;
         }
     </style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap">
+<style>
+  :root {
+    --ground: #F3F6F6; --surface: #FFFFFF; --ink: #132022; --ink-2: #4A5C5F;
+    --rule: #D3DCDD; --hatch: #BCC9CA; --on-accent: #FFFFFF;
+    --p1: #3F4A8A; --p1-soft: #E4E7F4;
+    --p2: #1A6D72; --p2-soft: #DCEFEF;
+    --p3: #467119; --p3-soft: #E7F0DB;
+    --f-display: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+    --f-text: "Hanken Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1617; --surface: #142022; --ink: #E2EBEB; --ink-2: #9AACAE;
+      --rule: #28393B; --hatch: #3A5052; --on-accent: #0E1617;
+      --p1: #A9B2F3; --p1-soft: #222847;
+      --p2: #74C9CE; --p2-soft: #15373A;
+      --p3: #ADD673; --p3-soft: #26341A;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1617; --surface: #142022; --ink: #E2EBEB; --ink-2: #9AACAE;
+    --rule: #28393B; --hatch: #3A5052; --on-accent: #0E1617;
+    --p1: #A9B2F3; --p1-soft: #222847;
+    --p2: #74C9CE; --p2-soft: #15373A;
+    --p3: #ADD673; --p3-soft: #26341A;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--f-text); font-size: 1rem; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 56rem; margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+    padding-block: clamp(2rem, 5vw, 3.5rem) 4rem;
+    display: grid; gap: 2.25rem;
+  }
+
+  /* Masthead */
+  .masthead { display: grid; gap: .85rem; }
+  .label, .eyebrow {
+    margin: 0; font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-2);
+  }
+  h1 {
+    margin: 0; font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(1.9rem, 1.2rem + 2.8vw, 2.85rem); line-height: 1.08;
+    letter-spacing: -.012em; text-wrap: balance; max-width: 24ch;
+  }
+  .facts { margin: .35rem 0 0; display: flex; flex-wrap: wrap; gap: .75rem 2.25rem; }
+  .facts div { display: grid; gap: .1rem; }
+  .facts dt { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .facts dd { margin: 0; font-family: var(--f-mono); font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+  /* Time budget */
+  .budget { margin: 0; display: grid; gap: .5rem; }
+  .bar { display: grid; grid-template-columns: 10fr 45fr 30fr 30fr 5fr; height: 2.1rem; border-radius: 3px; overflow: hidden; }
+  .seg {
+    display: flex; align-items: center; min-width: 0; padding-inline: .6rem; overflow: hidden;
+    white-space: nowrap; font-family: var(--f-mono); font-size: .78rem; font-weight: 500; color: var(--on-accent);
+  }
+  .seg + .seg { box-shadow: inset 2px 0 0 var(--ground); }
+  .seg-edge { padding: 0; background: repeating-linear-gradient(135deg, var(--hatch) 0 1.5px, transparent 1.5px 5px), var(--surface); }
+  .seg-p1 { background: var(--p1); }
+  .seg-p2 { background: var(--p2); }
+  .seg-p3 { background: var(--p3); }
+  .ticks {
+    position: relative; height: 1.4rem; font-family: var(--f-mono); font-size: .72rem;
+    color: var(--ink-2); font-variant-numeric: tabular-nums;
+  }
+  .ticks span { position: absolute; top: 0; left: calc(var(--at) * 1%); transform: translateX(-50%); padding-top: .4rem; }
+  .ticks span::before { content: ""; position: absolute; top: 0; left: 50%; width: 1px; height: .3rem; background: var(--ink-2); }
+  .ticks span:first-child { transform: none; }
+  .ticks span:first-child::before { left: 0; }
+  .ticks span:last-child { transform: translateX(-100%); }
+  .ticks span:last-child::before { left: auto; right: 0; }
+
+  /* Schedule */
+  .schedule { display: grid; gap: 1.5rem; }
+  .row { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: 1.75rem; align-items: start; }
+  .when {
+    margin: 0; padding-top: .2rem; font-family: var(--f-mono); font-size: .88rem;
+    font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink);
+  }
+  .when .dur { display: block; margin-top: .1rem; font-size: .74rem; color: var(--ink-2); }
+  .ceremony { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: .85rem 1rem; }
+  .ceremony h2 { margin: 0; font-size: 1.02rem; font-weight: 600; line-height: 1.4; }
+  .sub { margin: .1rem 0 0; font-size: .93rem; color: var(--ink-2); }
+
+  .part { display: grid; }
+  .p1 { --c: var(--p1); --soft: var(--p1-soft); }
+  .p2 { --c: var(--p2); --soft: var(--p2-soft); }
+  .p3 { --c: var(--p3); --soft: var(--p3-soft); }
+  .part-head { background: var(--soft); border-radius: 4px; padding: .9rem 1rem; }
+  .part-head .when { color: var(--c); font-weight: 500; }
+  .kicker {
+    display: flex; align-items: center; gap: .5rem; margin: 0 0 .15rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c);
+  }
+  .kicker::before { content: ""; width: .7rem; height: .7rem; border-radius: 2px; background: var(--c); flex: none; }
+  .part-head h2 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.32rem; line-height: 1.25; text-wrap: balance; }
+  .talks { list-style: none; margin: 0; padding: 0 1rem; }
+  .talk { padding-block: 1.05rem; border-top: 1px solid var(--rule); }
+  .talk:first-child { border-top: 0; }
+  .talk h3 {
+    margin: 0 0 .3rem; font-family: var(--f-display); font-weight: 500; font-size: 1.125rem;
+    line-height: 1.38; max-width: 62ch; text-wrap: pretty;
+  }
+  .authors { margin: 0; font-size: .95rem; color: var(--ink-2); max-width: 68ch; }
+
+  .notes { border-top: 1px solid var(--rule); padding-top: 1rem; font-size: .9rem; color: var(--ink-2); }
+  .notes p { margin: 0; max-width: 68ch; }
+
+  @media (max-width: 560px) {
+    .row { grid-template-columns: minmax(0, 1fr); row-gap: .3rem; }
+    .when { padding-top: 0; }
+    .when .dur { display: inline; margin: 0 0 0 .6rem; }
+    .seg-long { display: none; }
+    .talks { padding: 0 .25rem; }
+  }
+  @media print {
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding-block: 0; }
+    .ceremony, .part-head, .talk { break-inside: avoid; }
+  }
+</style>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -64,277 +201,112 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="custom-select-box">
 
-                    </div>
-                    <div class="right-phone-box">
-                        <!--<p>For any information write to: <a href="#">cataldo.musto@uniba.it</a></p>-->
-                    </div><!--
-                    <div class="our-link">
-                        <ul>
+<div class="page">
+  <header class="masthead">
+    <p class="eyebrow">Workshop programme &middot; Afternoon session</p>
+    <h1>Explaining, Auditing and Overseeing AI Systems</h1>
+    <dl class="facts">
+      <div><dt>Time</dt><dd>14:00&ndash;16:00</dd></div>
+      <div><dt>Room</dt><dd>TBA</dd></div>
+      <div><dt>Duration</dt><dd>120 min</dd></div>
+      <div><dt>Talks</dt><dd>7</dd></div>
+      <div><dt>Talk slot</dt><dd>12 min + 3 min Q&amp;A</dd></div>
+    </dl>
+  </header>
 
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% 80% off on Vegetables
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% 80% off on Vegetables
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
-                            </ul>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- End Main Top -->
-
-    <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-          <div class="container">
-              <!-- Start Header Navigation -->
-              <div class="navbar-header">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="fa fa-bars"></i>
-              </button>
-                  <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt="" style="max-width:100px;"></a>
-              </div>
-              <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                  <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="motivation.html">Motivations</a></li>
-                      <li class="nav-item"><a class="nav-link" href="call.html">CALL FOR PAPERS</a></li>
-                      <!-- <li class="nav-item"><a class="nav-link"  href="papers.html">Accepted Papers</a></li>-->
-                      <li class="nav-item-active"><a class="nav-link"  href="program.html">Workshop Program</a></li>
-                      <li class="nav-item"><a class="nav-link" href="organizers.html">People</a></li>
-                          <!--   <li class="nav-item"><a class="nav-link" href="pc-member.html">Program Committee</a></li> -->
-                          <!-- <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.di.uniba.it/~swap/xai-it/2020">Previous Edition: XAI.it 2020</a></li> -->
-                      <!-- <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.di.uniba.it/~swap/xai-it/2021">Previous Edition: XAI.it 2021</a></li> -->
-                      <li class="nav-item"><a class="nav-link" target="_blank" href="https://beyondaccuracy-userprofiling.github.io/xai-it-2023/">Previous Edition: XAI.it 2023</a></li>
-                  </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-
-              <!-- Start Atribute Navigation -->
-
-              <!-- End Atribute Navigation -->
-          </div>
-                <!-- /.navbar-collapse -->
-
-
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-
-    <!-- End Top Search -->
-
-    <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Workshop Program</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Workshop Program</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <figure class="budget" aria-label="Session time budget: opening 10 minutes, three thematic parts, closing 5 minutes">
+    <figcaption class="label">Time budget</figcaption>
+    <div class="bar" aria-hidden="true">
+        <span class="seg seg-edge"></span>
+        <span class="seg seg-p1">Part I<span class="seg-long">&nbsp;&middot;&nbsp;45 min</span></span>
+        <span class="seg seg-p2">Part II<span class="seg-long">&nbsp;&middot;&nbsp;30 min</span></span>
+        <span class="seg seg-p3">Part III<span class="seg-long">&nbsp;&middot;&nbsp;30 min</span></span>
+        <span class="seg seg-edge"></span>
     </div>
-    <!-- End All Title Box -->
-
-    <!-- Start About Page  -->
-    <div class="about-box-main">
-        <div class="container">
-            <div class="row">
-
-				<div class="col-lg-12">
-                  <!--  <h2 class="noo-sh-title-top">Workshop Day: November 8, 2023</span></h2>-->
-
-<h1 class="entry-title">Program and Proceedings</h1>
-<p>Workshop Proceedings, as every year, is available on: </p>
-<p><strong><a href="http://WWW.CEUR-WS.org" style="color: #ce3737">CEUR-WS.org</a></strong></p>
-<figure class="wp-block-image size-large"><a href="http://ceur-ws.org/"><img src="https://intrs2022.files.wordpress.com/2022/09/download-3.png?w=390" alt="" class="wp-image-178"></a></figure>
-<p><a style="color:blue" href="https://ceur-ws.org/Vol-3839/">https://ceur-ws.org/Vol-3839</a></p>
-<p>The articles will be fully indexed by <strong>Scopus</strong>, <strong>Google Scholar</strong> and all other indexing platforms.</p>
-                <hr><br>
-
-<h1>Tentative Schedule</h1>
-	
-	    <h3>November 26th, 2024 - Room D0.01</h3>
-	    <p><span class="session-title">16:00 - 16:15</span> Opening</p>
-	    <p><span class="session-title">16:15 - 17:00</span> Invited Talk - Mirko Marras - <b><i>Faithful Generative Modeling over Knowledge Graphs for Explainable Personalization</i></b></p>
-	
-	    <p><span class="session-title">17:00 - 17:40</span> Session 1</p>
-	    <ul>
-	        <li style="margin-left:50px">
-	            <span class="session-title">17:00 - 17:20</span> - 
-	            <span class="authors">Silvia D'Amicantonio, Mishal Kizhakkam Kulangara, Het Darshan Mehta, Shalini Pal, Marco Levantesi, Marco Polignano, Erasmo Purificato and Ernesto William De Luca</span>. 
-	            <span class="paper-title">A Comprehensive Strategy to Bias and Mitigation in Human Resource Decision Systems</span>
-	        </li>
-	        <li style="margin-left:50px">
-	            <span class="session-title">17:20 - 17:40</span> - 
-	            <span class="authors">Leonardo Dal Ronco and Erasmo Purificato</span>. 
-	            <span class="paper-title">ExplainBattery: Enhancing Battery Capacity Estimation with an Efficient LSTM Model and Explainability Features</span>
-	        </li>
-	    </ul><br>
-	    <p><span class="session-title">17:40 - 17:45</span> Closing Day 1</p><hr><br><br>
-	
-	    <h3>November 27th, 2024 - Room Kolp 2</h3>
-	    <p><span class="session-title">10:30 - 10:45</span> Opening Day 2</p>
-	
-	    <p><span class="session-title">10:45 - 12:05</span> Session 2</p>
-	    <ul>
-	        <li style="margin-left:50px">
-	            <span class="session-title">10:45 - 11:05</span> - 
-	            <span class="authors">Ejdis Gjinika, Nicola Arici, Luca Putelli, Alfonso Emilio Gerevini and Ivan Serina</span>. 
-	            <span class="paper-title">An Analysis on How Pre-Trained Language Models Learn Different Aspects</span>
-	        </li>
-	        <li style="margin-left:50px">
-	            <span class="session-title">11:05 - 11:25</span> - 
-	            <span class="authors">Giovanna Castellano, Maria Grazia Miccoli, Raffele Scaringi, Gennaro Vessio and Gianluca Zaza</span>. 
-	            <span class="paper-title">Using LLMs to explain AI-generated art classification via Grad-CAM heatmaps</span>
-	        </li>
-	        <li style="margin-left:50px">
-	            <span class="session-title">11:25 - 11:45</span> - 
-	            <span class="authors">Zhuofan Zhang and Herbert Wiklicky</span>. 
-	            <span class="paper-title">Probabilistic Abstract Interpretation on Neural Networks via Grids Approximation</span>
-	        </li>
-	        <li style="margin-left:50px">
-	            <span class="session-title">11:45 - 12:05</span> - 
-	            <span class="authors">Daehyun Yoo and Caterina Giannetti</span>. 
-	            <span class="paper-title">Ethical AI Systems and Shared Accountability: The Role of Economic Incentives in Fairness and Explainability</span>
-	        </li><br>
-	    </ul>
-	    <p><span class="session-title">12:05 - 12:10</span> Closing Day 2</p><hr><br><br>
-	   <div class="col-lg-12">
-                    <h2 class="noo-sh-title-top">Invited Talk</span></h2>
-		   <img src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=JZhqKBIAAAAJ&citpid=22"/>
-					<p style="text-align: justify; color :black">
-                        <ul>
-                            <li><b>Speaker: </b> Dott. Mirko Marras, Università degli Studi di Cagliari</li>
-                        </ul>
-
-                    <p style="text-align: justify; color :black;">
-                        <ul>
-                            <li><b>Title: </b>Faithful Generative Modeling over Knowledge Graphs for Explainable Personalization</li>
-                            <li><b>Abstract: </b>As personalized systems become an integral part of our daily lives, ensuring their transparency and relevance is of critical importance. To address this challenge, we will explore the use of generative models for the creation of explainable suggestions rooted in the structure of knowledge graphs, ensuring that the generated outputs are both relevant and consistent with the underlying data. We will highlight the significance of faithfulness in generative modeling, presenting methods and applications that effectively balance personalization with explainability under a faithful generation. Examples from domains such as entertainment, education, and nutrition will illustrate how these approaches can enhance user trust and improve the impact of personalized systems. Furthermore, we will envision how these methods further promise to generalize to a wide range of tasks beyond personalization, expanding their applicability across diverse fields and communities.</li>
-                            <br>
-                            <li><b>Bio: </b>Mirko Marras is a Tenure-Track Assistant Professor of Deep Learning at the University of Cagliari (Italy), in the Department of Mathematics and Computer Science. Prior to this, he was a postdoctoral researcher at EPFL (Switzerland) and a visiting scholar at Eurecat (Spain) and New York University (USA). His interdisciplinary research focuses on developing trustworthy machine learning methods, with applications spanning entertainment, education, nutrition, smart cities, and biometrics. He has co-authored over 90 papers in leading venues, including AAAI, ECIR, RecSys, SIGIR, and UMAP, and has delivered tutorials on responsible artificial intelligence, with a special emphasis on explainability, at prominent conferences such as RecSys 2022, ECML-PKDD 2023, and ECIR 2024. As a regular member of the program committees for major conferences increasingly influenced by trustworthy artificial intelligence, he has received several outstanding reviewer awards, including at ECIR 2024 and RecSys 2023 and 2024. He is a member of both ACM and IEEE.
-			</i>
-                        </ul>
-				    </p>
-                </div>
-					
-        <!--
-				<div class="col-lg-12">
-                    <h2 class="noo-sh-title-top">Invited Talk</span></h2>
-					<p style="text-align: justify; color :black">
-                        <ul>
-                            <li><b>Time: </b>11:00 - 11:35</li>
-                            <li><b>Speaker: </b> Prof. Giovanni Stilo, University of L'Aquila</li>
-                        </ul>
-                    </p>
-
-                    <!-- <p style="text-align: justify; color :black; font-size: large;">
-                        Graphs' Counterfactual Explainability Landscape: current state and frontiers
-                    </p>
-                    <h3><b>Graphs' Counterfactual Explainability Landscape: current state and frontiers</b></h3>
-
-                    <p style="text-align: justify; color :black;">
-                        <ul>
-                            <!-- <li><b>Title: </b> Backpropagating through complex discrete distributions and symbolic algorithms</li>
-                            <li><b>Abstract: </b>Counterfactual Explanation (CE) techniques have garnered attention as a means to provide insights to the users engaging with AI systems. While extensively researched in domains such as medical imaging and autonomous vehicles, Graph Counterfactual Explanation (GCE) methods have been comparatively under-explored. GCEs generate a new graph akin to the original one, having a different outcome grounded on the underlying predictive model. During this presentation, we take you on a journey across the GCE, commencing with foundational concepts. Next, we introduce the categorization of explainers, emphasize key tools essential for initiating work in this field, explore the latest advancements, offer a visual comparison of various generative methods, and conclude with our final remarks. More info,  materials, and references at: <a href="http://aiimlab.org/events/AIxIA_XAI.it_2023_Graphs_Counterfactual_Explainability_Landscape_current_state_frontiers.html" target="_blank" style="color: cornflowerblue; font-size: inherit;">http://aiimlab.org/events/AIxIA_XAI.it_2023_Graphs_Counterfactual_Explainability_Landscape_current_state_frontiers.html</a></li>
-                            <br>
-                            <li><b>Bio: </b>Prof. Giovanni Stilo is a Computer Science and Data Science associate professor at the University of L'Aquila, where he leads the Master's Degree in Data Science and is part of the <i>Artificial Intelligence and Information Mining Collective</i> (<a href="http://aiimlab.org/" target="_blank" style="color: cornflowerblue; font-size: inherit;">http://aiimlab.org/</a>). He received his PhD in Computer Science in 2013, and in 2014, he was a visiting researcher at <i>Yahoo! Labs in Barcelona</i>. His research interests are related to <i>machine learning, data mining,</i> and <i>artificial intelligence</i>, with a special interest in (but not limited to) trustworthiness aspects such as <i>Bias, Fairness, and Explainability</i>.  Specifically, he is the head of the <i>GRETEL</i> (<a href="http://aiimlab.org/code.html" target="_blank" style="color: cornflowerblue; font-size: inherit;">http://aiimlab.org/code.html</a>) project devoted to empowering the research in the Graph Counterfactual Explainability field. He has co-organized a long series (2020-2023) of top-tier International workshops (<a href="http://aiimlab.org/events.html" target="_blank" style="color: cornflowerblue; font-size: inherit;">http://aiimlab.org/events.html</a>) and Journal Special Issues focused on Bias and Fairness in Search and Recommendation. He serves on the editorial boards of IEEE, ACM, Springer, and Elsevier Journals such as <i>TITS, TKDE, DMKD, AI, KAIS,</i> and <i>AIIM</i>.
-                                He is responsible for New technologies for data collection, preparation, and analysis of the <i>Territory Aperti</i> project and coordinator of the activities on <i>"Responsible Data Science and Training"</i> of PNRR SoBigData.it project (<a href="http://sobigdata.eu/" target="_blank" style="color: cornflowerblue; font-size: inherit;">http://sobigdata.eu/</a>), and PI of the <i>"FAIR-EDU: Promote FAIRness in EDUcation Institutions" project</i>.</li>
-					    </ul>
-				    </p>
-                </div>
-	    
-
-					
-                <!-- <a href="" target="_blank" style="color: cornflowerblue; font-size: inherit;"></a>
-
-                <div class="col-lg-12">
-                    <h2 class="noo-sh-title-top">Program</span></h2>
-
-                    <p style="text-align: justify; color :black">
-                      <ul>
-                        <li><b>09:00 - 09:10 - Workshop Opening</b> (with presentation of <i>SoBigData.it</i> project)</li>
-                        <!-- <li>Cataldo Musto, University of Bari</li>
-                        <br>
-
-                        <li><b>09:10 - 10:30 - Session 1</b></li>
-						<li><i>(15 min. presentation + 5 min. discussion per paper)</i></li>
-                        <li>Caterina Borzillo, Alessio Ragno and Roberto Capobianco - <b>Understanding Deep RL agent decisions: a novel interpretable approach with trainable prototypes</b></li><br>
-                        <li>Soumick Chatterjee, Arnab Das, Rupali Khatun and Andreas Nürnberger - <b>Unboxing the black-box of deep learning based reconstruction of undersampled MRIs</b></li><br>
-                        <li>Andrea Tocchetti, Jie Yang and Marco Brambilla - <b>Rationale Trees: Towards a Formalization of Human Knowledge for Explainable Natural Language Processing</b></li><br>
-                        <li>Muhammad Suffian, Ilia Stepin, Jose Maria Alonso-Moral and Alessandro Bogliolo - <b>Investigating Human-Centered Perspectives in Explainable Artificial Intelligence</b></li><br>
-
-                        <li><b>10:30 - 11:00 - Coffee Break</b></li>
-                        <br>
-
-                        <li><b>11:00 - 11:35 - Invited Talk</b></li>
-                        <li>Giovanni Stilo, University of L'Aquila - <b>Graphs' Counterfactual Explainability Landscape: current state and frontiers</b></li>
-                        <br>
-
-                        <li><b>11:35 - 12:55 - Session 2</b></li>
-                        <li><i>(15 min. presentation + 5 min. discussion per paper)</i></li>
-                        <li>Simona Colucci, Tommaso Di Noia, Francesco M. Donini, Claudio Pomo and Eugenio Di Sciascio - <b>Irrelevant Explanations: a logical formalization and a case study</b></li><br>
-                        <li>Lorenzo Malandri, Fabio Mercorio, Mario Mezzanzanica and Andrea Seveso - <b>Presenting MERLIN: A Tool For Model-Contrastive Explanations Through Symbolic Reasoning</b></li><br>
-                        <li>Andrea Apicella, Salvatore Giugliano, Francesco Isgro and Roberto Prevete - <b>SHAP-based explanations to improve classification systems</b></li><br>
-                        <li>Andrea Colombo, Laura Fiorenza and Sofia Mongardi - <b>A Flexible Metric-Based Approach to Assess Neural Network Interpretability in Image Classification</b></li><br>
-
-                        <li><b>12:55 - 13:00 - Workshop Closing</b></li>
-                        <!-- <li>Cataldo Musto, University of Bari</li>
-                        <br>
-					  </ul>
-                    </p>
-
--->
-                </div>
-            </div>
-					
-        </div>
-
+    <div class="ticks" aria-hidden="true">
+        <span style="--at:0.0000">14:00</span>
+        <span style="--at:25.0000">14:30</span>
+        <span style="--at:50.0000">15:00</span>
+        <span style="--at:75.0000">15:30</span>
+        <span style="--at:100.0000">16:00</span>
     </div>
+  </figure>
 
+  <main class="schedule">
+    <section class="row ceremony" aria-label="Opening">
+      <p class="when"><time datetime="14:00">14:00</time>&ndash;<time datetime="14:10">14:10</time><span class="dur">10 min</span></p>
+      <div><h2>Opening</h2><p class="sub">Welcome and overview of the session</p></div>
+    </section>
+    <section class="part p1" aria-labelledby="part-I">
+      <header class="row part-head">
+        <p class="when"><time datetime="14:10">14:10</time>&ndash;<time datetime="14:55">14:55</time><span class="dur">45 min &middot; 3 talks</span></p>
+        <div><p class="kicker">Part I</p><h2 id="part-I">Explaining LLMs, Explaining with LLMs</h2></div>
+      </header>
+      <ol class="talks">
+        <li class="row talk" data-paper-id="5">
+          <p class="when"><time datetime="14:10">14:10</time>&ndash;<time datetime="14:25">14:25</time></p>
+          <div><h3>Explaining Bias-Refusal Geometry Across Languages: An Activation-Steering Study of Llama 2 and GPT-OSS</h3><p class="authors">Mehuly Chakraborthy and Antonio Rodà</p></div>
+        </li>
+        <li class="row talk" data-paper-id="6">
+          <p class="when"><time datetime="14:25">14:25</time>&ndash;<time datetime="14:40">14:40</time></p>
+          <div><h3>Explainable Retrieval-Augmented Generation for Multilingual Dark-Pattern Auditing and Digital Consumer Protection</h3><p class="authors">Jobin Roy, Akshita Sakshi, Shifin Mohammed, Het Darshan Mehta, Marco Polignano, Giovanni Semeraro and Ernesto William De Luca</p></div>
+        </li>
+        <li class="row talk" data-paper-id="3">
+          <p class="when"><time datetime="14:40">14:40</time>&ndash;<time datetime="14:55">14:55</time></p>
+          <div><h3>LLMs as Verbal Translation Layer for TSC Explanations</h3><p class="authors">Felix Marti-Perez, Cesar Ferri, Jan Arne Telle and Christian Bontveit</p></div>
+        </li>
+      </ol>
+    </section>
+    <section class="part p2" aria-labelledby="part-II">
+      <header class="row part-head">
+        <p class="when"><time datetime="14:55">14:55</time>&ndash;<time datetime="15:25">15:25</time><span class="dur">30 min &middot; 2 talks</span></p>
+        <div><p class="kicker">Part II</p><h2 id="part-II">Auditing Visual Perception Models</h2></div>
+      </header>
+      <ol class="talks">
+        <li class="row talk" data-paper-id="8">
+          <p class="when"><time datetime="14:55">14:55</time>&ndash;<time datetime="15:10">15:10</time></p>
+          <div><h3>OCR-Guided Occlusion Sensitivity for Auditing Document Classifiers</h3><p class="authors">Valerio Caravani, Riccardo De Cesaris and Paolo Merialdo</p></div>
+        </li>
+        <li class="row talk" data-paper-id="2">
+          <p class="when"><time datetime="15:10">15:10</time>&ndash;<time datetime="15:25">15:25</time></p>
+          <div><h3>TRACE-Pave: A Neural Perception and Auditable Decision Framework for Explainable Road Crack Assessment</h3><p class="authors">Tayyab Rehman and Giovanni De Gasperis</p></div>
+        </li>
+      </ol>
+    </section>
+    <section class="part p3" aria-labelledby="part-III">
+      <header class="row part-head">
+        <p class="when"><time datetime="15:25">15:25</time>&ndash;<time datetime="15:55">15:55</time><span class="dur">30 min &middot; 2 talks</span></p>
+        <div><p class="kicker">Part III</p><h2 id="part-III">Assurance and Human Oversight</h2></div>
+      </header>
+      <ol class="talks">
+        <li class="row talk" data-paper-id="4">
+          <p class="when"><time datetime="15:25">15:25</time>&ndash;<time datetime="15:40">15:40</time></p>
+          <div><h3>From Post-Hoc Explanations to Assurance-Oriented XAI in Safety-Critical Automatic Target Recognition</h3><p class="authors">Vanessa Buhrmester, David Münch and Michael Arens</p></div>
+        </li>
+        <li class="row talk" data-paper-id="7">
+          <p class="when"><time datetime="15:40">15:40</time>&ndash;<time datetime="15:55">15:55</time></p>
+          <div><h3>Following Delegation Traces to Study Human Oversight in Interaction with Multimodal AI</h3><p class="authors">Agnese Chiatti, Matteo Matteucci and Viola Schiaffonati</p></div>
+        </li>
+      </ol>
+    </section>
+    <section class="row ceremony" aria-label="Closing">
+      <p class="when"><time datetime="15:55">15:55</time>&ndash;<time datetime="16:00">16:00</time><span class="dur">5 min</span></p>
+      <div><h2>Closing remarks</h2><p class="sub">Wrap-up of the session</p></div>
+    </section>
+  </main>
+
+  <footer class="notes">
+    <p>Each 15-minute slot comprises a 12-minute presentation followed by 3 minutes of questions. Talks are grouped by thematic affinity.</p>
+  </footer>
+</div>
+
+
+					
+    			</div>
+			</div>
+		</div>
+	</div>
     <!-- End About Page -->
 
     <!-- Start Footer  -->
