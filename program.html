@@ -4,7 +4,7 @@
 
 <head>
 
-	    <style>
+	<style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -135,14 +135,16 @@
   .talks { list-style: none; margin: 0; padding: 0 1rem; }
   .talk { padding-block: 1.05rem; border-top: 1px solid var(--rule); }
   .talk:first-child { border-top: 0; }
+  
+  /* Removed max-width limits to allow full margin alignment */
   .talk h3 {
     margin: 0 0 .3rem; font-family: var(--f-display); font-weight: 500; font-size: 1.125rem;
-    line-height: 1.38; max-width: 62ch; text-wrap: pretty;
+    line-height: 1.38; text-wrap: pretty;
   }
-  .authors { margin: 0; font-size: .95rem; color: var(--ink-2); max-width: 68ch; }
+  .authors { margin: 0; font-size: .95rem; color: var(--ink-2); }
 
   .notes { border-top: 1px solid var(--rule); padding-top: 1rem; font-size: .9rem; color: var(--ink-2); }
-  .notes p { margin: 0; max-width: 68ch; }
+  .notes p { margin: 0; }
 
   @media (max-width: 560px) {
     .row { grid-template-columns: minmax(0, 1fr); row-gap: .3rem; }
@@ -322,6 +324,9 @@
   <div style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 4px; margin-bottom: 20px; text-align: center; font-weight: bold; font-family: var(--f-text);">
       <span style="font-size: 1.2em; margin-right: 10px;">⚠️</span>
       PROGRAM UPDATE: Please note the new workshop time (10:30 - 12:30) and room (Accademia di Belle Arti - T1).
+      <div style="margin-top: 8px; font-weight: normal; font-size: 0.9em; color: #533f03;">
+          For last-second room changes, updates, and room locations, please check the <a href="https://aixia2026.unipg.it/program/program_workshops.html" style="color: #0056b3; text-decoration: underline;" target="_blank" rel="noopener noreferrer">official AIxIA 2026 Workshops Program webpage</a>.
+      </div>
   </div>
   <!-- END SCHEDULE UPDATE BANNER -->
 
