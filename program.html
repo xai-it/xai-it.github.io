@@ -110,7 +110,8 @@
 
   /* Schedule */
   .schedule { display: grid; gap: 1.5rem; }
-  .row { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: 1.75rem; align-items: start; }
+  /* Changed .row to .sched-row to prevent Bootstrap conflicts */
+  .sched-row { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: 1.75rem; align-items: start; }
   .when {
     margin: 0; padding-top: .2rem; font-family: var(--f-mono); font-size: .88rem;
     font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink);
@@ -136,7 +137,6 @@
   .talk { padding-block: 1.05rem; border-top: 1px solid var(--rule); }
   .talk:first-child { border-top: 0; }
   
-  /* Removed max-width limits to allow full margin alignment */
   .talk h3 {
     margin: 0 0 .3rem; font-family: var(--f-display); font-weight: 500; font-size: 1.125rem;
     line-height: 1.38; text-wrap: pretty;
@@ -147,7 +147,7 @@
   .notes p { margin: 0; }
 
   @media (max-width: 560px) {
-    .row { grid-template-columns: minmax(0, 1fr); row-gap: .3rem; }
+    .sched-row { grid-template-columns: minmax(0, 1fr); row-gap: .3rem; }
     .when { padding-top: 0; }
     .when .dur { display: inline; margin: 0 0 0 .6rem; }
     .seg-long { display: none; }
@@ -361,63 +361,63 @@
   </figure>
 
   <main class="schedule">
-    <section class="row ceremony" aria-label="Opening">
+    <section class="sched-row ceremony" aria-label="Opening">
       <p class="when"><time datetime="10:30">10:30</time>&ndash;<time datetime="10:40">10:40</time><span class="dur">10 min</span></p>
       <div><h2>Opening</h2><p class="sub">Welcome and overview of the session</p></div>
     </section>
     <section class="part p1" aria-labelledby="part-I">
-      <header class="row part-head">
+      <header class="sched-row part-head">
         <p class="when"><time datetime="10:40">10:40</time>&ndash;<time datetime="11:25">11:25</time><span class="dur">45 min &middot; 3 talks</span></p>
         <div><p class="kicker">Part I</p><h2 id="part-I">Explaining LLMs, Explaining with LLMs</h2></div>
       </header>
       <ol class="talks">
-        <li class="row talk" data-paper-id="5">
+        <li class="sched-row talk" data-paper-id="5">
           <p class="when"><time datetime="10:40">10:40</time>&ndash;<time datetime="10:55">10:55</time></p>
           <div><h3>Explaining Bias-Refusal Geometry Across Languages: An Activation-Steering Study of Llama 2 and GPT-OSS</h3><p class="authors">Mehuly Chakraborthy and Antonio Rodà</p></div>
         </li>
-        <li class="row talk" data-paper-id="6">
+        <li class="sched-row talk" data-paper-id="6">
           <p class="when"><time datetime="10:55">10:55</time>&ndash;<time datetime="11:10">11:10</time></p>
           <div><h3>Explainable Retrieval-Augmented Generation for Multilingual Dark-Pattern Auditing and Digital Consumer Protection</h3><p class="authors">Jobin Roy, Akshita Sakshi, Shifin Mohammed, Het Darshan Mehta, Marco Polignano, Giovanni Semeraro and Ernesto William De Luca</p></div>
         </li>
-        <li class="row talk" data-paper-id="3">
+        <li class="sched-row talk" data-paper-id="3">
           <p class="when"><time datetime="11:10">11:10</time>&ndash;<time datetime="11:25">11:25</time></p>
           <div><h3>LLMs as Verbal Translation Layer for TSC Explanations</h3><p class="authors">Felix Marti-Perez, Cesar Ferri, Jan Arne Telle and Christian Bontveit</p></div>
         </li>
       </ol>
     </section>
     <section class="part p2" aria-labelledby="part-II">
-      <header class="row part-head">
+      <header class="sched-row part-head">
         <p class="when"><time datetime="11:25">11:25</time>&ndash;<time datetime="11:55">11:55</time><span class="dur">30 min &middot; 2 talks</span></p>
         <div><p class="kicker">Part II</p><h2 id="part-II">Auditing Visual Perception Models</h2></div>
       </header>
       <ol class="talks">
-        <li class="row talk" data-paper-id="8">
+        <li class="sched-row talk" data-paper-id="8">
           <p class="when"><time datetime="11:25">11:25</time>&ndash;<time datetime="11:40">11:40</time></p>
           <div><h3>OCR-Guided Occlusion Sensitivity for Auditing Document Classifiers</h3><p class="authors">Valerio Caravani, Riccardo De Cesaris and Paolo Merialdo</p></div>
         </li>
-        <li class="row talk" data-paper-id="2">
+        <li class="sched-row talk" data-paper-id="2">
           <p class="when"><time datetime="11:40">11:40</time>&ndash;<time datetime="11:55">11:55</time></p>
           <div><h3>TRACE-Pave: A Neural Perception and Auditable Decision Framework for Explainable Road Crack Assessment</h3><p class="authors">Tayyab Rehman and Giovanni De Gasperis</p></div>
         </li>
       </ol>
     </section>
     <section class="part p3" aria-labelledby="part-III">
-      <header class="row part-head">
+      <header class="sched-row part-head">
         <p class="when"><time datetime="11:55">11:55</time>&ndash;<time datetime="12:25">12:25</time><span class="dur">30 min &middot; 2 talks</span></p>
         <div><p class="kicker">Part III</p><h2 id="part-III">Assurance and Human Oversight</h2></div>
       </header>
       <ol class="talks">
-        <li class="row talk" data-paper-id="4">
+        <li class="sched-row talk" data-paper-id="4">
           <p class="when"><time datetime="11:55">11:55</time>&ndash;<time datetime="12:10">12:10</time></p>
           <div><h3>From Post-Hoc Explanations to Assurance-Oriented XAI in Safety-Critical Automatic Target Recognition</h3><p class="authors">Vanessa Buhrmester, David Münch and Michael Arens</p></div>
         </li>
-        <li class="row talk" data-paper-id="7">
+        <li class="sched-row talk" data-paper-id="7">
           <p class="when"><time datetime="12:10">12:10</time>&ndash;<time datetime="12:25">12:25</time></p>
           <div><h3>Following Delegation Traces to Study Human Oversight in Interaction with Multimodal AI</h3><p class="authors">Agnese Chiatti, Matteo Matteucci and Viola Schiaffonati</p></div>
         </li>
       </ol>
     </section>
-    <section class="row ceremony" aria-label="Closing">
+    <section class="sched-row ceremony" aria-label="Closing">
       <p class="when"><time datetime="12:25">12:25</time>&ndash;<time datetime="12:30">12:30</time><span class="dur">5 min</span></p>
       <div><h2>Closing remarks</h2><p class="sub">Wrap-up of the session</p></div>
     </section>
